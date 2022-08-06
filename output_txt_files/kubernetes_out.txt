@@ -1,0 +1,61 @@
+(.devops) ➜  project-ml-microservice-kubernetes git:(dev) ✗ kubectl describe pod trio-lingo
+Name:         trio-lingo
+Namespace:    default
+Priority:     0
+Node:         minikube/192.168.49.2
+Start Time:   Tue, 28 Jun 2022 08:53:29 +0100
+Labels:       run=trio-lingo
+Annotations:  <none>
+Status:       Running
+IP:           172.17.0.24
+IPs:
+  IP:  172.17.0.24
+Containers:
+  trio-lingo:
+    Container ID:   docker://1b9c9bd8567da3c21b58c541d6880d02875aa795220a42dd6a0ca74ef294bdd2
+    Image:          hebronace/predictor
+    Image ID:       docker://sha256:9fbe308256c6b9d352c6b15b2f76b54b0e7d5e7ac97db6981c90601834353cf9
+    Port:           8000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 28 Jun 2022 08:53:30 +0100
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-jggq8 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-jggq8:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  3m2s  default-scheduler  Successfully assigned default/trio-lingo to minikube
+  Normal  Pulled     3m2s  kubelet            Container image "hebronace/predictor" already present on machine
+  Normal  Created    3m2s  kubelet            Created container trio-lingo
+  Normal  Started    3m1s  kubelet            Started container trio-lingo
+(.devops) ➜  project-ml-microservice-kubernetes git:(dev) ✗ kubectl port-forward pod/trio-lingo 8000:8000
+Forwarding from 127.0.0.1:8000 -> 8000
+Forwarding from [::1]:8000 -> 8000
+Handling connection for 8000
+➜  project-ml-microservice-kubernetes git:(dev) ✗ ./make_prediction.sh
+Port: 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
