@@ -1,4 +1,4 @@
-<!-- [![CircleCI](https://dl.circleci.com/status-badge/img/gh/caleberi/project-ml-microservice-kubernetes/tree/dev.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/caleberi/project-ml-microservice-kubernetes/tree/dev) -->
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Horlawhumy-dev/udacity-ml-k8s-project/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/Horlawhumy-dev/udacity-ml-k8s-project?branch=master)
 
 ## Project Overview
 
